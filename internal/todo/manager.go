@@ -17,7 +17,28 @@ func Add(tasks []Task, desc string) []Task {
 	return tasks
 }
 
+//List возвращает отфильтрованный срез по заданному параметру
 func List(tasks []Task, filter string) []Task {
-    // Тут будет код
-    return tasks // временно
+	switch filter {
+	case "all":
+		return tasks
+	case "done":
+		doneTasks := []Task{}
+		for _, task := range tasks {
+			if task.Done == true {
+				doneTasks = append(doneTasks, task)
+			}
+		}
+		return doneTasks
+	case "pending":
+		pendingTasks := []Task{}
+		for _, task := range tasks {
+			if task.Done == false {
+				pendingTasks = append(pendingTasks, task)
+			}
+		}
+		return pendingTasks
+	default:
+		return []Task{}
+	}
 }
