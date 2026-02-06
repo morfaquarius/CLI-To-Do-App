@@ -27,7 +27,7 @@ func List(tasks []Task, filter string) []Task {
 	case "done":
 		doneTasks := []Task{}
 		for _, task := range tasks {
-			if task.Done == true {
+			if task.Done {
 				doneTasks = append(doneTasks, task)
 			}
 		}
@@ -35,7 +35,7 @@ func List(tasks []Task, filter string) []Task {
 	case "pending":
 		pendingTasks := []Task{}
 		for _, task := range tasks {
-			if task.Done == false {
+			if !task.Done {
 				pendingTasks = append(pendingTasks, task)
 			}
 		}
